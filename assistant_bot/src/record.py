@@ -61,9 +61,12 @@ class Record:
         Returns:
             bool: True якщо номер змінено успішно, в іншому випадку False
         """
+        if self.find_phone(new_phone):
+            print("The new number is already in the phone book")
+            return False
+
         if self.remove_phone(old_phone):
-            if self.add_phone(new_phone):
-                return True
+            return self.add_phone(new_phone)
         return False
 
     def find_phone(self, phone):
